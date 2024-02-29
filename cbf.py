@@ -31,7 +31,8 @@ def recommend_by_content_based_filtering(place_key, place_city, place_number):
               "category": data_content_based_filtering.iloc[i[0]]["Category"],
               "lat": data_content_based_filtering.iloc[i[0]]["Lat"],
               "long": data_content_based_filtering.iloc[i[0]]["Long"],
-              "price": data_content_based_filtering.iloc[i[0]]["Price"]
+              "price": data_content_based_filtering.iloc[i[0]]["Price"],
+              "rating": data_content_based_filtering.iloc[i[0]]["Rating"]
               }
           recommended_places.append(place)
           index+=1
