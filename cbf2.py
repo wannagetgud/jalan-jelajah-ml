@@ -29,7 +29,7 @@ def recommend_by_content_based_filtering2(place_name,similarity_data=cosine_sim_
     recommended_places = []
     for i in range(len(result)):
         place = {
-            "id": result.iloc[i]["Place_Id"],
+            "id": str(result.iloc[i]["Place_Id"]),
             "place_name": result.iloc[i]["Place_Name"],
             "description": result.iloc[i]["Description"],
             "city": result.iloc[i]["City"],
