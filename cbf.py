@@ -24,7 +24,7 @@ def recommend_by_content_based_filtering(place_key, place_city, place_number):
     for i in place_key_list:
         if data_content_based_filtering.iloc[i[0]].City == place_city:
           place = {
-              "id": index,
+              "id": data_content_based_filtering.iloc[i[0]]["Place_Id"],
               "place_name": data_content_based_filtering.iloc[i[0]]["Place_Name"],
               "description": data_content_based_filtering.iloc[i[0]]["Description"],
               "city": data_content_based_filtering.iloc[i[0]]["City"],

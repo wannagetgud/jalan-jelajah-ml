@@ -21,7 +21,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 cosine_sim = cosine_similarity(cv_matrix)
 cosine_sim_df = pd.DataFrame(cosine_sim,index=data['Place_Name'],columns=data['Place_Name'])
 
-def recommend_by_content_based_filtering2(place_name,similarity_data=cosine_sim_df,items=data[['Place_Name','Category','Description','City', 'Lat', 'Long', 'Price', 'Rating']],k=10):
+def recommend_by_content_based_filtering2(place_name,similarity_data=cosine_sim_df,items=data[['Place_Id','Place_Name','Category','Description','City', 'Lat', 'Long', 'Price', 'Rating']],k=10):
     index = similarity_data.loc[:,place_name].to_numpy().argpartition(range(-1,-k,-1))
     closest = similarity_data.columns[index[-1:-(k+2):-1]]
     closest = closest.drop(place_name,errors='ignore')
@@ -29,7 +29,7 @@ def recommend_by_content_based_filtering2(place_name,similarity_data=cosine_sim_
     recommended_places = []
     for i in range(len(result)):
         place = {
-            "id": i,
+            "id": result.iloc[i]["Place_Id"],
             "place_name": result.iloc[i]["Place_Name"],
             "description": result.iloc[i]["Description"],
             "city": result.iloc[i]["City"],
